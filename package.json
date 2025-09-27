@@ -1,0 +1,24 @@
+{
+  "name": "cse341-library",
+  "version": "1.0.0",
+  "description": "CSE 341 Library API",
+  "homepage": "https://github.com/benwasden/cse341-library#readme",
+  "bugs": {
+    "url": "https://github.com/benwasden/cse341-library/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benwasden/cse341-library.git"
+  },
+  "license": "ISC",
+  "author": "Ben Wasden and Zach Sutherland",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
