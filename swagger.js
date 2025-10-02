@@ -6,7 +6,7 @@ const doc = {
         description: 'CSE341 Library Project'
     },
     host: 'localhost:3000',
-    schemes: ['https']
+    schemes: ['http', 'https']
 };
 
 const outputFile = './swagger.json';
