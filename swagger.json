@@ -5,10 +5,9 @@
     "description": "CSE341 Library Project",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-library-9wiz.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
