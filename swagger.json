@@ -102,6 +102,34 @@
         }
       }
     },
+    "/fiction/genre/{genre}": {
+      "get": {
+        "tags": [
+          "Fiction"
+        ],
+        "description": "Get all non fiction books that match the given genre (Examples: Fantasy, Romance).",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "genre",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Genre name, Examples: Fantasy, Romance"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
     "/fiction/{id}": {
       "get": {
         "tags": [
@@ -223,7 +251,7 @@
         "tags": [
           "NonFiction"
         ],
-        "description": "Gett all non fiction books in the database.",
+        "description": "Get all non fiction books in the database.",
         "produces": [
           "application/json"
         ],
@@ -285,6 +313,34 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/nonfiction/genre/{genre}": {
+      "get": {
+        "tags": [
+          "NonFiction"
+        ],
+        "description": "Get all non fiction books that match the given genre (Examples: Memoir, History).",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "genre",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Genre name. Examples in database: Memoir, History."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }

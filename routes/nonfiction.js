@@ -9,6 +9,8 @@ router.get('/', nonFictionController.getAll);
 
 router.get('/:id', nonFictionController.getSingle);
 
+router.get('/genre/:genre', nonFictionController.getByGenre);
+
 router.post('/', isAuthenticated, validation.saveBook, nonFictionController.createBook);
 
 router.put('/:id', isAuthenticated, validation.saveBook, nonFictionController.updateBook);
