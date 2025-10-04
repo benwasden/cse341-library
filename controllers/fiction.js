@@ -31,6 +31,30 @@ const getSingle = async (req, res) => {
     }
 };
 
+const getByGenre = async (req, res) => {
+  //#swagger.tags=['Fiction']
+  try {
+    const genre = (req.params.genre || '').trim();
+    if (!genre) {
+      res.status(400).json('Must provide a genre.');
+      return;
+    }
+
+    const books = await mongodb
+      .getDatabase()
+      .db()
+      .collection('fiction')
+      .find({ genre })
+      .collation({ locale: 'en', strength: 2 })
+      .toArray();
+
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json(books);
+  } catch (err) {
+    res.status(500).json({ message: err.message || 'Error fetching by genre.' });
+  }
+};
+
 const createBook = async (req, res) => {
     //#swagger.tags=['Fiction']
     try {
@@ -90,4 +114,4 @@ const deleteBook = async (req, res) => {
     };
 };
 
-module.exports = { getAll, getSingle, createBook, updateBook, deleteBook }
+module.exports = { getAll, getSingle, createBook, updateBook, deleteBook, getByGenre }
