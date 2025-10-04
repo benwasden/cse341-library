@@ -1,13 +1,15 @@
-const passport = require('passport');
-
 const router = require('express').Router();
+const passport = require('passport');
 
 router.use('/', require('./swagger'));
 
-router.use('/users', require('./users'));
-router.use('/groups', require('./groups'));
-router.use('/reviews', require('./reviews'));
-router.use('/books', require('./books'));
+router.use('/fiction', require('./fiction'));
+
+router.use('/nonfiction', require('./nonfiction'));
+
+// router.use('/comics', require('./comics'));
+
+// router.use('/groups', require('./groups'));
 
 router.get('/login', passport.authenticate('github'), (req, res) => {});
 
