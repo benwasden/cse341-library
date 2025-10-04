@@ -10,24 +10,24 @@ const getAll = async (req, res) => {
             res.status(200).json(books);
     });
     } catch (err) {
-        res.status(400).json({ message: err })
+        res.status(400).json({ message: err.message })
     }
 };
 
 const getSingle = async (req, res) => {
     //#swagger.tags=['Fiction']
     try {
+        const bookId = new ObjectId(req.params.id);
         if (!ObjectId.isValid(req.params.id)) {
             res.status(400).json('Must use a valid book id to see a book.');
         }
-        const bookId = new ObjectId(req.params.id);
         const result = await mongodb.getDatabase().db().collection('fiction').find({ _id: bookId });
         result.toArray().then((books) => {
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(books[0]);
         });
     } catch (err) {
-        res.status(400).json({ message: err });
+        res.status(400).json({ message: err.message || "Some error occured while getting the book." });
     }
 };
 
@@ -78,10 +78,10 @@ const createBook = async (req, res) => {
 const updateBook = async (req, res) => {
     //#swagger.tags=['Fiction']
     try {
+        const bookId = new ObjectId(req.params.id);
         if (!ObjectId.isValid(req.params.id)) {
             res.status(400).json('Must use a valid book id to update a book.');
         }
-        const bookId = new ObjectId(req.params.id);
         const book = {
             title: req.body.title,
             author_fname: req.body.author_fname,
@@ -102,10 +102,10 @@ const updateBook = async (req, res) => {
 const deleteBook = async (req, res) => {
     //#swagger.tags=['Fiction']
     try {
+        const bookId = new ObjectId(req.params.id);
         if (!ObjectId.isValid(req.params.id)) {
             res.status(400).json('Must use a valid book id to delete a book.');
         }
-        const bookId = new ObjectId(req.params.id);
         const response = await mongodb.getDatabase().db().collection('fiction').deleteOne({ _id: bookId });
         if (response.deletedCount > 0) {
             res.status(204).send();
