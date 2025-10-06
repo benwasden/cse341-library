@@ -25,6 +25,31 @@ const saveBook = async (req, res, next) => {
     }).catch( err => console.log(err))
 }
 
+const saveGroup = async (req, res, next) => {
+    const validationRule = {
+        "group_name": "required|string",
+        "description": "required|string",
+        "created_date": "string",
+        "genre_focus": "required|string",
+        "users": "",
+        "meeting_day": "required|string",
+        "meeting_time": "required|string"
+    };
+
+    await validator(req.body, validationRule, {}, (err, status) => {
+        if (!status) {
+            res.status(412)
+                .send({
+                    success: false,
+                    message: 'Validation failed',
+                    data: err
+                });
+        } else {
+            next();
+        }
+    }).catch( err => console.log(err))
+}
+
 const saveComic = async (req, res, next) => {
     const validationRule = {
         "title": "required|string",
@@ -49,4 +74,4 @@ const saveComic = async (req, res, next) => {
     }).catch( err => console.log(err))
 }
 
-module.exports = { saveBook, saveComic }
+module.exports = { saveBook, saveComic, saveGroup }

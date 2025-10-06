@@ -9,9 +9,9 @@ router.get('/', groupController.getAll);
 
 router.get('/:id', groupController.getSingle);
 
-router.post('/', isAuthenticated, validation.saveBook, groupController.createGroup);
+router.post('/', isAuthenticated, validation.saveGroup, groupController.createGroup);
 
-router.put('/:id', isAuthenticated, validation.saveBook, groupController.updateGroup);
+router.put('/:id', isAuthenticated, validation.saveGroup, groupController.updateGroup);
 
 router.delete('/:id', isAuthenticated, groupController.deleteGroup);
 
