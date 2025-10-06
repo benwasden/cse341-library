@@ -9,7 +9,7 @@ router.use('/nonfiction', require('./nonfiction'));
 
 // router.use('/comics', require('./comics'));
 
-// router.use('/groups', require('./groups'));
+router.use('/groups', require('./groups'));
 
 router.get('/login', passport.authenticate('github'), (req, res) => {});
 
