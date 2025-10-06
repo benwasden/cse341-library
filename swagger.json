@@ -5,9 +5,10 @@
     "description": "CSE341 Library Project",
     "version": "1.0.0"
   },
-  "host": "cse341-library-9wiz.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
+    "http",
     "https"
   ],
   "paths": {
@@ -31,12 +32,22 @@
         }
       }
     },
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/fiction/": {
       "get": {
         "tags": [
           "Fiction"
         ],
-        "description": "View all fiction books in the database.",
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -53,8 +64,93 @@
         "tags": [
           "Fiction"
         ],
-        "description": "Add a fiction book to the database. Ensure that the version is a number. Requires authentication.",
+        "description": "",
         "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "any"
+                },
+                "author_fname": {
+                  "example": "any"
+                },
+                "author_lname": {
+                  "example": "any"
+                },
+                "publish_date": {
+                  "example": "any"
+                },
+                "isbn": {
+                  "example": "any"
+                },
+                "version": {
+                  "example": "any"
+                },
+                "genre": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/fiction/{id}": {
+      "get": {
+        "tags": [
+          "Fiction"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Fiction"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "body",
             "in": "body",
@@ -98,6 +194,34 @@
           },
           "412": {
             "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Fiction"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -110,7 +234,7 @@
         "tags": [
           "Fiction"
         ],
-        "description": "Get all non fiction books that match the given genre (Examples: Fantasy, Romance).",
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -119,34 +243,6 @@
             "name": "genre",
             "in": "path",
             "required": true,
-            "type": "string",
-            "description": "Genre name, Examples: Fantasy, Romance"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      }
-    },
-    "/fiction/{id}": {
-      "get": {
-        "tags": [
-          "Fiction"
-        ],
-        "description": "Get a specific fiction book by its ID.",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
             "type": "string"
           }
         ],
@@ -156,92 +252,6 @@
           },
           "400": {
             "description": "Bad Request"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Fiction"
-        ],
-        "description": "Update a fiction book in the database. Requires authentication.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "author_fname": {
-                  "example": "any"
-                },
-                "author_lname": {
-                  "example": "any"
-                },
-                "publish_date": {
-                  "example": "any"
-                },
-                "isbn": {
-                  "example": "any"
-                },
-                "version": {
-                  "example": "any"
-                },
-                "genre": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "412": {
-            "description": "Precondition Failed"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Fiction"
-        ],
-        "description": "Delete a fiction book from the database. Requires authentication.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -254,7 +264,7 @@
         "tags": [
           "NonFiction"
         ],
-        "description": "Get all non fiction books in the database.",
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -271,7 +281,7 @@
         "tags": [
           "NonFiction"
         ],
-        "description": "Add a non fiction book to the database. Requires authentication and ensure the version is a number.",
+        "description": "",
         "parameters": [
           {
             "name": "body",
@@ -308,9 +318,6 @@
           "204": {
             "description": "No Content"
           },
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           },
@@ -323,40 +330,12 @@
         }
       }
     },
-    "/nonfiction/genre/{genre}": {
-      "get": {
-        "tags": [
-          "NonFiction"
-        ],
-        "description": "Get all non fiction books that match the given genre (Examples: Memoir, History).",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "genre",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Genre name. Examples in database: Memoir, History."
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      }
-    },
     "/nonfiction/{id}": {
       "get": {
         "tags": [
           "NonFiction"
         ],
-        "description": "Lookup a specific non fiction book in the database.",
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -381,7 +360,7 @@
         "tags": [
           "NonFiction"
         ],
-        "description": "Update a non fiction book in the database. Requires authentication.",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -442,7 +421,227 @@
         "tags": [
           "NonFiction"
         ],
-        "description": "Delete a non fiction book from the database. Requires authentication.",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/nonfiction/genre/{genre}": {
+      "get": {
+        "tags": [
+          "NonFiction"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "genre",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/groups/": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "group_name": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "created_date": {
+                  "example": "any"
+                },
+                "genre_focus": {
+                  "example": "any"
+                },
+                "users": {
+                  "example": "any"
+                },
+                "meeting_day": {
+                  "example": "any"
+                },
+                "meeting_time": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/groups/{id}": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "group_name": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "created_date": {
+                  "example": "any"
+                },
+                "genre_focus": {
+                  "example": "any"
+                },
+                "users": {
+                  "example": "any"
+                },
+                "meeting_day": {
+                  "example": "any"
+                },
+                "meeting_time": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Groups"
+        ],
+        "description": "",
         "parameters": [
           {
             "name": "id",
