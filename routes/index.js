@@ -7,7 +7,7 @@ router.use('/fiction', require('./fiction'));
 
 router.use('/nonfiction', require('./nonfiction'));
 
-// router.use('/comics', require('./comics'));
+router.use('/comics', require('./comics'));
 
 // router.use('/groups', require('./groups'));
 

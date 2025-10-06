@@ -110,7 +110,7 @@ const deleteBook = async (req, res) => {
         if (response.deletedCount > 0) {
             res.status(204).send();
     }} catch (err) {
-        res.status(500).json(response.error || 'Some error occured while deleting the book');
+        res.status(500).json(response.error || 'Some error occured while deleting the book.');
     };
 };
 
