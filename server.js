@@ -63,10 +63,15 @@ process.on('uncaughtException', (err, origin) => {
     console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception Origin: ${origin}`);
 })
 
-mongodb.initDb((err) => {
+if (require.main === module) {
+  mongodb.initDb((err) => {
     if (err) {
-        console.log(err);
+      console.log(err);
     } else {
-        app.listen(port, () => (console.log(`Database is listening on port ${port}`)));
+      app.listen(port, () => (console.log(`Database is listening on port ${port}`)));
     }
-});
+  });
+};
+
+// Export app for unit tests
+module.exports = app;

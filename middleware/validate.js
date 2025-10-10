@@ -31,7 +31,7 @@ const saveGroup = async (req, res, next) => {
         "description": "required|string",
         "created_date": "string",
         "genre_focus": "required|string",
-        "users": "",
+        "users": "array",
         "meeting_day": "required|string",
         "meeting_time": "required|string"
     };

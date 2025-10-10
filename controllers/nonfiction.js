@@ -19,7 +19,7 @@ const getSingle = async (req, res) => {
     try {
         const bookId = new ObjectId(req.params.id);
         if (!ObjectId.isValid(req.params.id)) {
-            res.status(400).json('Must use a valid book id to see a book.');
+            return res.status(400).json('Must use a valid book id to see a book.');
         }
         const result = await mongodb.getDatabase().db().collection('nonFiction').find({ _id: bookId });
         result.toArray().then((books) => {
@@ -27,7 +27,7 @@ const getSingle = async (req, res) => {
             res.status(200).json(books[0]);
         });
     } catch (err) {
-        res.status(400).json({ message: err.message || "Some error occured while getting the book." });
+        return res.status(400).json({ message: err.message || "Some error occured while getting the book." });
     }
 };
 
