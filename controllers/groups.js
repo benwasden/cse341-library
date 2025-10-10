@@ -19,15 +19,15 @@ const getSingle = async (req, res) => {
     try {
         const groupId = new ObjectId(req.params.id);
         if (!ObjectId.isValid(req.params.id)) {
-            res.status(400).json('Must use a valid group id to view.');
+            return res.status(400).json('Must use a valid group id to view.');
         }
         const result = await mongodb.getDatabase().db().collection('groups').find({ _id: groupId });
-        result.toArray().then((books) => {
+        result.toArray().then((groups) => {
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(groups[0]);
         });
     } catch (err) {
-        res.status(500).json({ message: err.message || "Some error occured while getting the group." });
+        return res.status(500).json({ message: err.message || "Some error occured while getting the group." });
     }
 };
 
