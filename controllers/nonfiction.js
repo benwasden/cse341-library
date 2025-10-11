@@ -67,7 +67,7 @@ const getByAuthor = async (req, res) => {
     const books = await mongodb
       .getDatabase()
       .db()
-      .collection('fiction')
+      .collection('nonFiction')
       .find({ author_lname })
       .collation({ locale: 'en', strength: 2 })
       .toArray();
