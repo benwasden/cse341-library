@@ -13,6 +13,9 @@
   "paths": {
     "/login": {
       "get": {
+        "tags": [
+          "Authentication"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -23,6 +26,9 @@
     },
     "/logout": {
       "get": {
+        "tags": [
+          "Authentication"
+        ],
         "description": "",
         "responses": {
           "default": {
