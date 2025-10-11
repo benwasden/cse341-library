@@ -55,6 +55,30 @@ const getByGenre = async (req, res) => {
   }
 };
 
+const getByAuthor = async (req, res) => {
+  //#swagger.tags=['NonFiction']
+  try {
+    const author_lname = (req.params.author_lname || '').trim();
+    if (!author_lname) {
+      res.status(400).json('Must provide an author.');
+      return;
+    }
+
+    const books = await mongodb
+      .getDatabase()
+      .db()
+      .collection('fiction')
+      .find({ author_lname })
+      .collation({ locale: 'en', strength: 2 })
+      .toArray();
+
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json(books);
+  } catch (err) {
+    res.status(500).json({ message: err.message || 'Error fetching by author.' });
+  }
+};
+
 const createBook = async (req, res) => {
     //#swagger.tags=['NonFiction']
     try {
@@ -114,4 +138,4 @@ const deleteBook = async (req, res) => {
     };
 };
 
-module.exports = { getAll, getSingle, createBook, updateBook, deleteBook, getByGenre }
+module.exports = { getAll, getSingle, createBook, updateBook, deleteBook, getByGenre, getByAuthor }

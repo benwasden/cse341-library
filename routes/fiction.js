@@ -11,6 +11,8 @@ router.get('/:id', fictionController.getSingle);
 
 router.get('/genre/:genre', fictionController.getByGenre);
 
+router.get('/author/:author_lname', fictionController.getByAuthor);
+
 router.post('/', isAuthenticated, validation.saveBook, fictionController.createBook);
 
 router.put('/:id', isAuthenticated, validation.saveBook, fictionController.updateBook);

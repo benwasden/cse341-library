@@ -254,6 +254,36 @@
         }
       }
     },
+    "/fiction/author/{author_lname}": {
+      "get": {
+        "tags": [
+          "Fiction"
+        ],
+        "description": "Get books by the author's last name.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "author_lname",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/nonfiction/": {
       "get": {
         "tags": [
@@ -453,6 +483,36 @@
         "parameters": [
           {
             "name": "genre",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/nonfiction/author/{author_lname}": {
+      "get": {
+        "tags": [
+          "NonFiction"
+        ],
+        "description": "Get nonfiction books by the author's last name.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "author_lname",
             "in": "path",
             "required": true,
             "type": "string"
