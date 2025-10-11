@@ -43,7 +43,7 @@ const createGroup = async (req, res) => {
             meeting_day: req.body.meeting_day,
             meeting_time: req.body.meeting_time
         };
-        const response = await mongodb.getDatabase().db().collection('groups').insertOne(book);
+        const response = await mongodb.getDatabase().db().collection('groups').insertOne(group);
         if (response.acknowledged) {
             res.status(204).send();
     }} catch (err) {
