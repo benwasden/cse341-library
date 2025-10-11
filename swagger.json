@@ -68,25 +68,25 @@
               "type": "object",
               "properties": {
                 "title": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "author_fname": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "author_lname": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "publish_date": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "isbn": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "version": {
-                  "example": "any"
+                  "example": "integer"
                 },
                 "genre": {
-                  "example": "any"
+                  "example": "required|string"
                 }
               }
             }
@@ -153,25 +153,25 @@
               "type": "object",
               "properties": {
                 "title": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "author_fname": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "author_lname": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "publish_date": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "isbn": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "version": {
-                  "example": "any"
+                  "example": "integer"
                 },
                 "genre": {
-                  "example": "any"
+                  "example": "required|string"
                 }
               }
             }
@@ -285,25 +285,25 @@
               "type": "object",
               "properties": {
                 "title": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "author_fname": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "author_lname": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "publish_date": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "isbn": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "version": {
-                  "example": "any"
+                  "example": "integer"
                 },
                 "genre": {
-                  "example": "any"
+                  "example": "required|string"
                 }
               }
             }
@@ -370,25 +370,25 @@
               "type": "object",
               "properties": {
                 "title": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "author_fname": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "author_lname": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "publish_date": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "isbn": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "version": {
-                  "example": "any"
+                  "example": "integer"
                 },
                 "genre": {
-                  "example": "any"
+                  "example": "required|string"
                 }
               }
             }
@@ -502,22 +502,22 @@
               "type": "object",
               "properties": {
                 "title": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "author_fname": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "author_lname": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "publish_date": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "genre": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "issue": {
-                  "example": "any"
+                  "example": "integer"
                 }
               }
             }
@@ -584,22 +584,22 @@
               "type": "object",
               "properties": {
                 "title": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "author_fname": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "author_lname": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "publish_date": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "genre": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "issue": {
-                  "example": "any"
+                  "example": "integer"
                 }
               }
             }
@@ -713,25 +713,25 @@
               "type": "object",
               "properties": {
                 "group_name": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "description": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "created_date": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "genre_focus": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "users": {
-                  "example": "any"
+                  "example": ["user1", "user2"]
                 },
                 "meeting_day": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "meeting_time": {
-                  "example": "any"
+                  "example": "required|string"
                 }
               }
             }
@@ -801,25 +801,25 @@
               "type": "object",
               "properties": {
                 "group_name": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "description": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "created_date": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "genre_focus": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "users": {
-                  "example": "any"
+                  "example": ["user1", "user2"]
                 },
                 "meeting_day": {
-                  "example": "any"
+                  "example": "required|string"
                 },
                 "meeting_time": {
-                  "example": "any"
+                  "example": "required|string"
                 }
               }
             }
